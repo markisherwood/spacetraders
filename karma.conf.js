@@ -8,6 +8,7 @@ module.exports = function (config) {
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
+      require('karma-firefox-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage'),
       require('@angular-devkit/build-angular/plugins/karma')
@@ -37,7 +38,15 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
+    customLaunchers: {
+      firefoxHeadless: {
+        base: 'FirefoxDeveloper',
+        flags: [
+          '-start-debugger-server 6000'
+        ],
+      },
+    },
+    browsers: ['firefoxHeadless'],
     singleRun: false,
     restartOnFileChange: true
   });

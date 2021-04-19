@@ -14,7 +14,7 @@ describe('MainNavComponent', () => {
   let fixture: ComponentFixture<MainNavComponent>;
 
   beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
+    void TestBed.configureTestingModule({
       declarations: [MainNavComponent],
       imports: [
         NoopAnimationsModule,

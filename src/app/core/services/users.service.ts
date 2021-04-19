@@ -7,11 +7,21 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UsersService {
+  public tokenUrl = `https://api.spacetraders.io/users/:username/token`;
+
 
   constructor(private httpClient: HttpClient) { }
 
   login(username: string): Observable<TokenResponse> {
-    const encodedUsername = encodeURIComponent(username);
-    return this.httpClient.get<TokenResponse>(`https://api.spacetraders.io/users/${encodedUsername}/token`);
+    const url = this.buildTokenUrl(username);
+    return this.httpClient.get<TokenResponse>(url);
+  }
+
+  buildTokenUrl(username: string): string {
+    return this.buildUrl(this.tokenUrl, username);
+  }
+
+  buildUrl(url: string, username: string): string {
+    return url.replace(':username', encodeURIComponent(username));
   }
 }
