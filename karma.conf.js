@@ -39,14 +39,20 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
     autoWatch: true,
     customLaunchers: {
-      firefoxHeadless: {
+      firefoxDebug: {
         base: 'FirefoxDeveloper',
         flags: [
           '-start-debugger-server 6000'
         ],
+        prefs: {
+          'devtools.debugger.remote-enabled': true,
+          'devtools.chrome.enabled': true,
+          'devtools.debugger.prompt-connection': false,
+          'devtools.debugger.force-local': false,
+        },
       },
     },
-    browsers: ['firefoxHeadless'],
+    browsers: ['firefoxDebug'],
     singleRun: false,
     restartOnFileChange: true
   });
