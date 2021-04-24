@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
-import { UsersService as UserService } from './users.service';
+import { UserService as UserService } from './user.service';
 import { HttpClient } from '@angular/common/http';
 import { TokenResponse } from '@core/models/token-response.interface';
 
@@ -44,7 +44,7 @@ describe('UserService', () => {
 
     const url = userService.buildTokenUrl(testUsername);
     
-    userService.login(testUsername)
+    userService.register(testUsername)
       .subscribe(data =>
         // When observable resolves, result should match test data
         expect(data).toEqual(testData)
