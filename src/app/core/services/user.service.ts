@@ -18,7 +18,7 @@ export class UserService {
     return this.httpClient.get<TokenResponse>(url);
   }
 
-  loadUser(username: string, token: string): Observable<TokenResponse> {
+  loadUser(username: string): Observable<TokenResponse> {
     const url = this.buildUserUrl(username);
     return this.httpClient.get<TokenResponse>(url);
   }

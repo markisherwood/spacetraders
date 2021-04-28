@@ -10,6 +10,10 @@ import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import * as fromUser from './store/user/user.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { UserEffects } from './store/user/user.effects';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,8 +25,12 @@ import { environment } from '../environments/environment';
     BrowserAnimationsModule,
     LayoutModule,
     MainNavModule,
+    HttpClientModule,
     StoreModule.forRoot(reducers, { metaReducers }),
-    !environment.production ? StoreDevtoolsModule.instrument() : []
+    EffectsModule.forRoot([]),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    StoreModule.forFeature(fromUser.userFeatureKey, fromUser.reducer),
+    EffectsModule.forFeature([UserEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

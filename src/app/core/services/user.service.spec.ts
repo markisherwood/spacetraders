@@ -37,8 +37,8 @@ describe('UserService', () => {
       user: {
         username: testUsername,
         credits: 12345,
-        loans: null,
-        ships: null,
+        loans: [],
+        ships: [],
       }
     };
 

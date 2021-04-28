@@ -1,6 +1,6 @@
 export interface User {
     username: string,
     credits: number,
-    loans: unknown
-    ships: unknown,
+    loans: unknown[],
+    ships: unknown[],
 }
